@@ -4,7 +4,6 @@ package br.unisinos.radixsort;
  ** Implementation of a Radix Sort algorithm.
  */
  
-import java.util.Scanner;
 import java.util.Random;
  
 /** Class RadixSort **/
@@ -57,6 +56,7 @@ public class RadixSort
                 a[i] = b[i];	
             }
             
+            /** Move to the next digit **/
             exp *= 10;        
         }
     }
@@ -64,29 +64,39 @@ public class RadixSort
     /** Main method **/
     public static void main(String[] args) 
     {
+    	
+    	/** @param startTime = Start runtime **/
     	long startTime = System.currentTimeMillis();
     	
-    	System.out.println("Radix Sort Test\n");
+    	Random r = new Random();
     	
-        Random r = new Random();
+    	/** @param counting**/
         int n, i;
-
-        int[] arr = new int[2000000];
+    	
+    	/** Integer array generator **/
+        int[] arr = new int[100];
         n = arr.length;
         for (i = 0; i < n; i++) {
-          arr[i] = r.nextInt(99-0) + 0;
+          arr[i] = r.nextInt(9999-0) + 0;
         }
-        
+    	
         /** Call method sort **/
         sort(arr);
         
+    	System.out.println("Radix Sort Test\n");
+        
         /** Print sorted Array **/
-        System.out.println("\nElements after sorting ");        
+        System.out.println("Elements after sorting ");        
         for (i = 0; i < n; i++) {
         	System.out.print(arr[i]+" ");
         }
+        
+        /** @param endTime = End runtime **/
         long endTime = System.currentTimeMillis();
+        
         System.out.println();
-        System.out.println("totalTime " + (endTime - startTime)/1000);                     
+        
+        /** Total time of execution **/
+        System.out.println("\ntotalTime " + (endTime - startTime));                     
     }    
 }
